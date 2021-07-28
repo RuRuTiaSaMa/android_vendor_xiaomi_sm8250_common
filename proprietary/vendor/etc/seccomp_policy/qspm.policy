@@ -18,61 +18,46 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-ioctl: 1
-futex: 1
-openat: 1
-getuid: 1
-writev: 1
-newfstatat: 1
-fstat: 1
-rt_sigaction: 1
-prctl: 1
 mmap: arg2 in ~PROT_EXEC || arg2 in ~PROT_WRITE
-close: 1
-rt_sigreturn: 1
-restart_syscall: 1
-exit: 1
-exit_group: 1
-mprotect: 1
-faccessat: 1
-getrlimit: 1
-read: 1
-lseek: 1
-getdents64: 1
-write: 1
-readlinkat: 1
-fstatfs: 1
-pread64: 1
 munmap: 1
-mremap: 1
-dup: 1
-renameat: 1
-unlinkat: 1
-madvise: 1
+#prctl: arg0 == PR_SET_VMA || arg0 == PR_GET_DUMPABLE || arg0 == 0x37
 mprotect: arg2 in ~PROT_EXEC || arg2 in ~PROT_WRITE
+futex: 1
+read: 1
+openat: 1
+close: 1
 fstat: 1
+readlinkat: 1
+newfstatat: 1
+mremap: 1
 clock_gettime: 1
-socket: arg0 == AF_UNIX
+pread64: 1
+fstatfs: 1
+rt_sigaction: 1
+faccessat: 1
 rt_sigprocmask: 1
-connect: 1
+#ioctl: arg1 == TCGETS || arg1 == BINDER_WRITE_READ || arg1 == BINDER_SET_MAX_THREADS || arg1 == BINDER_VERSION
+ioctl: 1
 getrandom: 1
 fcntl: 1
-execve: 1
-getpid: 1
-set_tid_address: 1
-sched_getscheduler: 1
-sigaltstack: 1
+getuid: 1
+lseek: 1
+exit_group: 1
 sched_getaffinity: 1
-pipe2: 1
-
-# crash dump policy additions
-sigreturn: 1
+writev: 1
+exit: 1
+getpid: 1
+sigaltstack: 1
+getrlimit: 1
+restart_syscall: 1
+clone: 1
+sched_getscheduler: 1
+execve: 1
+socket: arg0 == AF_UNIX
+set_tid_address: 1
+rt_sigreturn: 1
+connect: 1
 gettid: 1
-recvmsg: 1
-process_vm_readv: 1
-tgkill: 1
-rt_tgsigqueueinfo: 1
-geteuid32: 1
-getgid32: 1
-getegid32: 1
-getgroups32: 1
+setpriority: 1
+prctl: 1
+write: 1
